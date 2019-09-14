@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import PlayerCards from './components/PlayerCards';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends React.Component {
   constructor() {

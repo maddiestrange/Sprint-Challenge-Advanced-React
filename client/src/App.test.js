@@ -1,15 +1,21 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
-import { isMainThread } from 'worker_threads';
+import * as rtl from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
-test(" app renders without crashing", () => {
-  render(<App />) });
+afterEach(rtl.cleanup);
 
-describe("cards class"), () => {
-  it('exists', () => {
-    const element = document.getElementById('cards');
-    expect(element).toBeDefined();
-  })
-}
+it('renders without crashing', () => {
+  const wrapper = rtl.render(
+    <div className="color">hello world</div>
+  );
+  // the querying functionality is accessed through the wrapper:
+  const element = wrapper.queryByText(/hello/i);
+
+  // assertions will come in here
+  expect(element).toBeTruthy(); // jest matcher
+  expect(element).toBeInTheDocument(); // jest-dom matcher
+  expect(element).toBeVisible(); // jest-dom matcher
+});
+
+
 
